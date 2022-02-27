@@ -249,8 +249,8 @@
 sighUp.addEventListener('click',(e)=>{
     var email= document.getElementById('Email').value;
     var password= document.getElementById('Password').value;
-    var auth = "sharmeen";
-    createUserWithEmailAndPassword(auth,email, password)
+   
+    createUserWithEmailAndPassword(auth , email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
