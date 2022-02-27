@@ -247,9 +247,9 @@
   const database = getDatabase(app);
         const auth = getAuth();
 signUp.addEventListener('click',(e)=>{
-    var email= document.getElementById('').value;
-    var password= document.getElementById('').value;
-    createUserWithEmailAndPassword(email, password)
+    var Email= document.getElementById('').value;
+    var Password= document.getElementById('').value;
+    createUserWithEmailAndPassword(Email, Password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
