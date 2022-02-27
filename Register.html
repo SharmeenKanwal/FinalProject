@@ -246,7 +246,7 @@
   const analytics = getAnalytics(app);
   const database = getDatabase(app);
         const auth = getAuth();
-sighUp.addEventListener('click',(e)=>{
+sighUp.addEventListner('click',(e)=>{
     var email= document.getElementById('Email').value;
     var password= document.getElementById('Password').value;
     createUserWithEmailAndPassword(email, password)
