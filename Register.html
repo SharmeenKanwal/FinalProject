@@ -184,7 +184,7 @@
                         </div>
 
                         <div class="form-group">
-                            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input type="submit" id="login" onclick="signInUser()" value="start now" class="btn theme-btn btn-block"></font></font>
+                            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input type="submit" id="signup" onclick="signIn()" value="start now" class="btn theme-btn btn-block"></font></font>
                         </div>
                         <div class="form-group login-desc">
                             <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Do you already have an account? </font></font><a href="/Account/LogIn"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Log in</font></font></a></p>
@@ -268,6 +268,96 @@
 
  
 firebase.initializeApp(firebaseConfig);
+firebase.getDatabase(firebaseConfig);   
+    const app = initializeApp(firebaseConfig);
+    const database getDatabase(app);
+    
+    var provider = new firebase.auth.GithubAuthProvider();
+    
+    signup.addEventListener('click',(e) => {
+
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;
+  let username = document.getElementById('username').value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    
+      const user = userCredential.user;
+
+      set(ref(database, 'users/' + user.uid),{
+          username: username,
+          email: email
+      })
+
+      alert('user created!');
+    
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      alert(errorMessage);
+    // ..
+    });
+
+});
+
+ login.addEventListener('click',(e)=>{
+   var email = document.getElementById('email').value;
+   var password = document.getElementById('password').value;
+
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+
+        const dt = new Date();
+         update(ref(database, 'users/' + user.uid),{
+          last_login: dt,
+        })
+
+         alert('User loged in!');
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(errorMessage);
+  });
+
+ });
+
+const user = auth.currentUser;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    //bla bla bla
+    // ...
+  } else {
+    // User is signed out
+    // ...
+    //bla bla bla
+  }
+});
+
+logout.addEventListener('click',(e)=>{
+
+   signOut(auth).then(() => {
+     // Sign-out successful.
+     alert('user loged out');
+   }).catch((error) => {
+     // An error happened.
+     const errorCode = error.code;
+     const errorMessage = error.message;
+
+        alert(errorMessage);
+   });
+
+});
     
 </script>
 </body>
