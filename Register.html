@@ -245,7 +245,7 @@ firebase.initializeApp(firebaseConfig);
 
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
-  let username = document.getElementById('username').value;
+  
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -253,7 +253,7 @@ firebase.initializeApp(firebaseConfig);
       const user = userCredential.user;
 
       set(ref(database, 'users/' + user.uid),{
-          username: username,
+          
           email: email
       })
 
