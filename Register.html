@@ -237,7 +237,7 @@
 firebase.initializeApp(firebaseConfig);
    
  
-    const database = getDatabase(app);
+    const database = getDatabase(firebaseConfig);
     
     var provider = new firebase.auth.GithubAuthProvider();
     
