@@ -240,25 +240,17 @@ firebase.initializeApp(firebaseConfig);
   const database = getDatabase(app);
   const auth = getAuth();
     
-    firebase.database();
-    
     var provider = new firebase.auth.GithubAuthProvider();
     
     signup.addEventListener('click',(e) => {
 
-  let email = document.getElementById('email').value;
-  let password = document.getElementById('password').value;
-  
-
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+ 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     
       const user = userCredential.user;
-
-      set(ref(database, 'users/' + user.uid),{
-          
-          email: email
-      })
 
       alert('user created!');
     
