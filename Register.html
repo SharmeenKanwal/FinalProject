@@ -235,8 +235,8 @@
 
 sighUp.addEventListener('click',(e) => {
 
-  var email = document.getElementById('Email').value;
-  var password = document.getElementById('Password').value;
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
   var username = document.getElementById('username').value;
 
   createUserWithEmailAndPassword(auth, email, password)
@@ -263,8 +263,8 @@ sighUp.addEventListener('click',(e) => {
 });
 
  login.addEventListener('click',(e)=>{
-   var email = document.getElementById('Email').value;
-   var password = document.getElementById('Password').value;
+   var email = document.getElementById('email').value;
+   var password = document.getElementById('password').value;
 
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
