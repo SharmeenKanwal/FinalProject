@@ -232,7 +232,10 @@
 
   firebase.initializeApp(firebaseConfig);
     
+    var provider = new firebase.auth.GithubAuthProvider();
+    
     function signInUser(){
+         firebase.auth().signInWithPopup(provider)
      console.log('BTN Works')   
     }
 </script>
