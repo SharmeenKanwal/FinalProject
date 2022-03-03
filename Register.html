@@ -214,110 +214,25 @@
     <script src="src/frontend/js/script.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google Translate"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Original text</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Contribute a better translation</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
 
 <div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div>
-
-    <script type="module">
+<script type="module">
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    //yout config code
+    apiKey: "AIzaSyDP4fCCGUFfeK06D74QGvE3XRM3jXJtM5k",
+    authDomain: "tf-demo-github-578b6.firebaseapp.com",
+    projectId: "tf-demo-github-578b6",
+    storageBucket: "tf-demo-github-578b6.appspot.com",
+    messagingSenderId: "26019802287",
+    appId: "1:26019802287:web:12b220ef3c3e233801b85a"
   };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const database = getDatabase(app);
-  const auth = getAuth();
-
-login.addEventListener('click',(e) => {
-
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
-  var username = document.getElementById('username').value;
-
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-     // Signed in 
-      const user = userCredential.user;
-
-      set(ref(database, 'users/' + user.uid),{
-          username: username,
-          email: email
-      })
-
-      alert('user created!');
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-
-      alert(errorMessage);
-    // ..
-    });
-
-});
-
- login.addEventListener('click',(e)=>{
-   var email = document.getElementById('email').value;
-   var password = document.getElementById('password').value;
-
-      signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-
-        const dt = new Date();
-         update(ref(database, 'users/' + user.uid),{
-          last_login: dt,
-        })
-
-         alert('User loged in!');
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-
-        alert(errorMessage);
-  });
-
- });
-
-const user = auth.currentUser;
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    //bla bla bla
-    // ...
-  } else {
-    // User is signed out
-    // ...
-    //bla bla bla
-  }
-});
-
-logout.addEventListener('click',(e)=>{
-
-   signOut(auth).then(() => {
-     // Sign-out successful.
-     alert('user loged out');
-   }).catch((error) => {
-     // An error happened.
-     const errorCode = error.code;
-     const errorMessage = error.message;
-
-        alert(errorMessage);
-   });
-
-});
- 
 </script>
+    
 </body>
 </html>
