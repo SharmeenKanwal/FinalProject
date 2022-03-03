@@ -235,14 +235,7 @@
     var provider = new firebase.auth.GithubAuthProvider();
     
     function signInUser(){
-         firebase.auth().signInWithPopup(provider).then(res=>{
-             let token = res.credential.accessToken;
-             let user = res.user;
-             console.log(user)
-         }).catch (e=>{
-             console.log(e)
-         })
-     console.log('BTN Works')   
+           console.log('BTN Works')   
     }
 </script>
     
