@@ -306,7 +306,44 @@ minor-bidi"><o:p></o:p></span></p><p class="MsoNormal" dir="RTL" style="backgrou
     <script src="src/frontend/js/scrollIt.min.js"></script>
     <!-- Main Script -->
     <script src="src/frontend/js/script.js"></script>
+  <script>
+	window.oncontextmenu = function () {
+				return false;
+			}
+			$(document).keydown(function (event) {
+				if (event.keyCode == 123) {
+					return false;
+				}
+				else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+					return false;
+				}
+			});
+		</script>
+	document.addEventListener('contextmenu', event => event.preventDefault());
  
+    document.onkeydown = function (e) {
+ 
+        // disable F12 key
+        if(e.keyCode == 123) {
+            return false;
+        }
+ 
+        // disable I key
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 73){
+            return false;
+        }
+ 
+        // disable J key
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+            return false;
+        }
+ 
+        // disable U key
+        if(e.ctrlKey && e.keyCode == 85) {
+            return false;
+        }
+    }
+	</script>
     
 </body>
 </html>
